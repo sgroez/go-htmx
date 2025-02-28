@@ -28,7 +28,6 @@ func main() {
 			fmt.Println("did not find expected body string prefix")
 			http.Error(w, "an error occured while processing the request", http.StatusInternalServerError)
 		}
-		fmt.Println(bodyString)
 		tmpl := template.Must(template.ParseFiles("output.html"))
 		tmpl.Execute(w, bodyString)
 	})
