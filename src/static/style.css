@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+#editor-grid {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: min-content 2fr 1fr;
+}
+
+#top-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#top-bar > li {
+  display: inline;
+}
+
+#output-terminal {
+  list-style-type: none;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#output-terminal > li {
+  margin: 0;
+}

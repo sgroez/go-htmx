@@ -1,7 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <script
+      src="https://unpkg.com/htmx.org@2.0.4"
+      integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
   <body>
-    <h1>test</h1>
+    <div id="editor-grid">
+      <ul id="top-bar">
+        <li>
+          <button
+            hx-post="/api/"
+            hx-include="[name='editor']"
+            hx-target="#output-terminal"
+            hx-swap="beforeend"
+          >
+            Run
+          </button>
+        </li>
+        <li><button>Settings</button></li>
+        <li><button>Help</button></li>
+      </ul>
+      <textarea id="editor" name="editor"></textarea>
+      <ul id="output-terminal"></ul>
+    </div>
   </body>
 </html>
