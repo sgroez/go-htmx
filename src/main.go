@@ -14,6 +14,9 @@ func main() {
 		tmpl := template.Must(template.ParseFiles("index.html"))
 		tmpl.Execute(w, nil)
 	})
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/static/favicon.ico", http.StatusMovedPermanently)
+	})
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/api/", func(w http.ResponseWriter, r *http.Request){
 		bodyByte, err := io.ReadAll(r.Body)
