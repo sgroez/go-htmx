@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ define "head" }}
+    <title>Editor</title>
+    {{ end }}
+  </head>
+  <body>
+    {{ define "body" }}
+    <div id="editor-grid">
+      <ul id="top-bar">
+        <li>
+          <button
+            hx-post="/api/"
+            hx-include="[name='editor']"
+            hx-target="#output-terminal"
+            hx-swap="beforeend"
+          >
+            Run
+          </button>
+        </li>
+        <li><button>Settings</button></li>
+        <li><button>Help</button></li>
+      </ul>
+      <textarea id="editor" name="editor"></textarea>
+      <ul id="output-terminal"></ul>
+    </div>
+    {{ end }}
+  </body>
+</html>
