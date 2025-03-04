@@ -8,6 +8,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", handleSiteLoad)
+	http.HandleFunc("/navigate/", handleRouteUpdate)
 	http.HandleFunc("/api/", handleApiCall)
 
 	//serve static files

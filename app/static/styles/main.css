@@ -3,10 +3,6 @@ body {
   font-size: 24px;
 }
 
-.content-grid {
-  display: grid;
-}
-
 .navigation {
   display: flex;
   align-items: center;

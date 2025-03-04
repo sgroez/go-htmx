@@ -11,33 +11,56 @@ import (
 
 func handleSiteLoad(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
-	validPaths := map[string]bool{
-		"": true,
-		"editor": true,
-		"images": true,
-	}
-	//check if path is valid
-	if _, contains := validPaths[path]; !contains {
+	if isValid := validatePath(path); !isValid {
 		http.Error(w, "page not found", http.StatusNotFound)
 		return
 	}
 	files := []string{"index.html"}
-	//if path not empty add subpage template to files
-	if len(path) > 0 {
-		files = append(files, path + ".html")
-	}
-	//load template files
+	files = append(files, path + ".html")
 	tmpl := template.Must(template.ParseFiles(files...))
-	//calculate data for the templates and execute the templates with the dat
+	data, err := loadRouteData(path)
+	if err != nil {
+		http.Error(w, "error while loading data", http.StatusInternalServerError)
+	}
+	tmpl.Execute(w, data)
+}
+
+func handleRouteUpdate(w http.ResponseWriter, r *http.Request) {
+	path := r.URL.Path[10:]
+	if isValid := validatePath(path); !isValid {
+		http.Error(w, "page not found", http.StatusNotFound)
+		return
+	}
+	tmpl := template.Must(template.ParseFiles(path + ".html"))
+	data, err := loadRouteData(path)
+	if err != nil {
+		http.Error(w, "error while loading data", http.StatusInternalServerError)
+	}
+	tmpl.Execute(w, data)
+}
+
+func validatePath(path string) bool {
+	validPaths := map[string]bool{
+		"home": true,
+		"editor": true,
+		"images": true,
+	}
+	if _, contains := validPaths[path]; contains {
+		return true
+	}
+	return false
+}
+
+func loadRouteData(path string) (any, error) {
 	switch path {
 	case "images":
 		fileNames, err := extractFileNames("./static/images")
 		if err != nil {
-			http.Error(w, "error while loading images", http.StatusInternalServerError)
+			return nil, err
 		}
-		tmpl.Execute(w, fileNames)
+		return fileNames, nil
 	default:
-		tmpl.Execute(w, nil)
+		return nil, nil
 	}
 }
 

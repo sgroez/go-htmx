@@ -13,10 +13,34 @@
   </head>
   <body>
     <ul class="navigation">
-      <li class="navigation-item"><a href="/">Home</a></li>
-      <li class="navigation-item"><a href="/editor">Editor</a></li>
-      <li class="navigation-item"><a href="/images">Images</a></li>
+      <li class="navigation-item">
+        <button
+          hx-get="/navigate/home"
+          hx-replace-url="home"
+          hx-target="#content"
+        >
+          Home
+        </button>
+      </li>
+      <li class="navigation-item">
+        <button
+          hx-get="/navigate/editor"
+          hx-replace-url="/editor"
+          hx-target="#content"
+        >
+          Editor
+        </button>
+      </li>
+      <li class="navigation-item">
+        <button
+          hx-get="/navigate/images"
+          hx-replace-url="/images"
+          hx-target="#content"
+        >
+          Images
+        </button>
+      </li>
     </ul>
-    <div class="content-grid">{{ block "body" . }} {{ end }}</div>
+    <div id="content">{{ block "body" . }} {{ end }}</div>
   </body>
 </html>

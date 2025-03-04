@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {{ define "head" }}
-    <title>Images</title>
-    <link rel="stylesheet" href="/static/styles/images.css" />
-    {{ end }}
-  </head>
-  <body>
-    {{ define "body" }}
-    <div class="masonry">
-      {{ range . }}
-      <img src="/static/images/{{.}}" />
-      {{ end }}
-    </div>
-    {{ end }}
-  </body>
-</html>
+{{ block "head" . }}
+<title id="title" hx-swap-oob="true">Images</title>
+<link
+  id="style"
+  hx-swap-oob="true"
+  rel="stylesheet"
+  href="/static/styles/images.css"
+/>
+{{ end }} {{ block "body" . }}
+<div class="masonry">
+  {{ range . }}
+  <img src="/static/images/{{.}}" />
+  {{ end }}
+</div>
+{{ end }}

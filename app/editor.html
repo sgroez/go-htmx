@@ -1,31 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {{ define "head" }}
-    <title>Editor</title>
-    <link rel="stylesheet" href="/static/styles/editor.css" />
-    {{ end }}
-  </head>
-  <body>
-    {{ define "body" }}
-    <div id="editor-grid">
-      <ul id="top-bar">
-        <li>
-          <button
-            hx-post="/api/"
-            hx-include="[name='editor']"
-            hx-target="#output-terminal"
-            hx-swap="beforeend"
-          >
-            Run
-          </button>
-        </li>
-        <li><button>Settings</button></li>
-        <li><button>Help</button></li>
-      </ul>
-      <textarea id="editor" name="editor"></textarea>
-      <ul id="output-terminal"></ul>
-    </div>
-    {{ end }}
-  </body>
-</html>
+{{ block "head" . }}
+<title id="title" hx-swap-oob="true">Editor</title>
+<link
+  id="style"
+  hx-swap-oob="true"
+  rel="stylesheet"
+  href="/static/styles/editor.css"
+/>
+{{ end }} {{ block "body" . }}
+<div id="editor-grid">
+  <ul id="top-bar">
+    <li>
+      <button
+        hx-post="/api/"
+        hx-include="[name='editor']"
+        hx-target="#output-terminal"
+        hx-swap="beforeend"
+      >
+        Run
+      </button>
+    </li>
+    <li><button>Settings</button></li>
+    <li><button>Help</button></li>
+  </ul>
+  <textarea id="editor" name="editor"></textarea>
+  <ul id="output-terminal"></ul>
+</div>
+{{ end }}
