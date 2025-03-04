@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-size: 24px;
+}
+
+.content-grid {
+  display: grid;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 1em;
+  height: 3em;
+  width: 100%;
+  align-items: center;
+}
+
+.navigation-item {
+  display: inline;
+}

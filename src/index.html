@@ -6,14 +6,17 @@
       integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/styles/main.css" />
     {{ block "head" . }}
     <title>Landing Page</title>
     {{ end }}
   </head>
   <body>
-    {{ block "body" . }}
-    <h1>Langing Page to navigate to subpages.</h1>
-    {{ end }}
+    <ul class="navigation">
+      <li class="navigation-item"><a href="/">Home</a></li>
+      <li class="navigation-item"><a href="/editor">Editor</a></li>
+      <li class="navigation-item"><a href="/images">Images</a></li>
+    </ul>
+    <div class="content-grid">{{ block "body" . }} {{ end }}</div>
   </body>
 </html>
