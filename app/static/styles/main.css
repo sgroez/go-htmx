@@ -1,20 +1,66 @@
-body {
-  margin: 0;
+:root {
   font-size: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color-scheme: light dark;
+  background-color: light-dark(white, black);
+  color: light-dark(black, white);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+button {
+  background: none;
+  color: inherit;
+  font: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+#main-layout {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+#content {
+  margin: 1em;
+}
+
+.container {
+  flex: 1;
+  overflow: auto;
+  min-height: 2em;
+  scrollbar-color: black white;
 }
 
 .navigation {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  list-style-type: none;
   margin: 0;
-  padding: 0 1em;
-  height: 3em;
-  width: 100%;
-  align-items: center;
+  padding: 0;
+  list-style-type: none;
 }
 
 .navigation-item {
   display: inline;
+  margin-right: 0.5em;
+}
+
+.bar {
+  background-color: light-dark(black, white);
+  color: light-dark(white, black);
+  min-height: 3em;
+  height: 3em;
+  margin: 0;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
 }
