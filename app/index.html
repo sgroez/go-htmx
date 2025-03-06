@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://unpkg.com/htmx.org@2.0.4"
       integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
@@ -53,7 +54,10 @@
       <div class="container">
         <div id="content">{{ block "body" . }} {{ end }}</div>
       </div>
-      <footer class="bar">Footer</footer>
+      <footer class="bar">
+        Website created by sgroez.
+        <a href="https://github.com/sgroez/go-htmx" target="_blank">Source</a>
+      </footer>
     </div>
   </body>
 </html>
